@@ -61,11 +61,30 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # services.displayManager.defaultSession = "hyprland";
+  programs.hyprland.enable = true;
+  programs.hyprland.xwayland.enable = true;
+
+  services.displayManager.ly.enable = true;
+
+  hardware.graphics.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git
+    hyprland
+    kitty
+    waybar
+    wofi
+  ];
+
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    font-awesome
+    nerd-fonts.jetbrains-mono
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
